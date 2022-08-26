@@ -368,7 +368,7 @@ def set_compiler_options(package_root, extensions):
 # endregion
 
 
-project_name = "ripemd"
+project_name = "ripemd-hash"
 package_root = "ripemd"
 
 class PCTBuildExt(build_ext):
@@ -401,7 +401,8 @@ ext_modules = [
 	Extension("ripemd._ripemd160",
 		include_dirs=['src/'],
 		sources=["src/ripemd160.c"],
-		depends=["src/common.h", "src/endianess.h", "src/errors.h"],
+		# it seems that pypi-build is not including files specified here, move them to MANIFEST.in
+		depends=[],
 		py_limited_api=True)
 ]
 
@@ -424,6 +425,7 @@ setup(
 	version=version_string,
 	description="Ripemd library for Python",
 	long_description=long_description,
+	long_description_content_type="text/markdown",
 	author="Symbol Contributors",
 	author_email="contributors@symbol.dev",
 	url="https://github.com/symbol/ripemd",
@@ -455,6 +457,6 @@ setup(
 	cmdclass={
 		'build_ext': PCTBuildExt,
 		'build_py': PCTBuildPy
-		},
+	},
 	ext_modules=ext_modules,
 )
