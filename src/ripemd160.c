@@ -46,7 +46,7 @@
 #include "common.h"
 #include "endianess.h"
 
-FAKE_INIT(RIPEMD160)
+FAKE_INIT(ripemd160)
 
 #define RIPEMD160_DIGEST_SIZE 20
 
